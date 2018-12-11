@@ -1,4 +1,4 @@
-# _Your project title_
+# Kotlin
 
 - _Ibrahim Mushtaq_
 - _ibrahimmushtaq@uoit.net_
@@ -20,33 +20,147 @@
 
 ## About the syntax
 
-> _give some code snippet of the language_
+- *Variable Declaration (Implcit)*
 
-*Let form*
+```kotlin
+var language = "English"
+val score = 95
+```
+- *Variable Declaration (Explcit)*
 
-```clojure
-(let [x 10
-      y 20]
-  (+ x y))
+```kotlin
+var language: String = "English"
+val score: Int = 95
+```
+
+- *Conditional (Blocks)*
+```kotlin
+    val flag = true
+
+    if (flag == true) {
+      //Do something
+    }
+```
+- *Conditional (Variable assignments)*
+```kotlin
+    val a = 12
+    val b = 13
+    val max: Int
+
+    max = if (a > b) a else b
+```
+- *Comments*
+```kotlin
+/* ... */
+// ....
+```
+- *Printing with Literals*
+```kotlin
+fun main(args : Array<String>) {
+    val score = 12.3
+
+    println("score")
+    println("$score")
+    println("score = $score")
+    println("${score + score}")
+}
+
+Output:
+score
+12.3
+score = 12.3
+24.6
+```
+- *For Loop*
+```kotlin
+  for (i in 1..5) {
+      println(i)
+  }
 ```
 
 ## About the tools
 
-> _Describe the compiler or interpreter needed_.
+> The tool that is required to build Kotlin is using the JDK installed and Kotlinc, which is its on compiler develped by JetBrains
 
 ## About the standard library
 
-> _Give some examples of the functions and data structures
-> offered by the standard library_.
+> Kotlin provides a ton of Standard Library. This includes but not limit to:
+
+- The run function exposes the value of the object that it was called from as this inside the block
+```kotlin
+val result = "Local String".run {
+    System.out.println(this) 
+    "New String"
+}
+System.out.println(result) 
+
+Output:
+Local String
+New String
+```
+- The let function exposes the value of the object that it was called from as it inside the block, while this is retained from the outer scope.
+```kotlin
+val result = "Local String".let {
+    System.out.println(this.name) 
+    System.out.println(it) 
+    "New String"
+}
+System.out.println(result) 
+```
+
+- Apply, which accept the instance as a reciever and then return reciever
+
+```kotlin
+fun getDeveloper(): Developer {
+    return Developer().apply {
+        devName = "Ibrahim Mushtaq"
+        devAge = 20
+    }
+} 
+```
+- With, which requires an instance to be passed as an argument and then returns the result of the last code within the block
+
+```kotlin
+fun getPersonFromDeveloper(developer: Developer): Person {
+    return with(developer) {
+        Person(devName, devAge)
+    }
+} 
+```
 
 ## About open source library
 
-> _Describe at least one contribution by the open source
-community written in the language._
+> This language has been used exstensibily through out the open source community. There have been a large number of libraries created through Kotlin 
+
+1. Anko, an opensource libraries used for making android development faster. https://github.com/Kotlin/anko
+2. RxDownload which is a multithreaded download tool. https://github.com/ssseasonnn/RxDownload
+3. Ktor, which is a framework for quickly connected applications in minimal effort
+https://github.com/ktorio/ktor
+4. Wassabi which is a HTTP framework. https://github.com/wasabifx/wasabi
+5. Kwery which is a SQL Library.
+https://github.com/andrewoma/kwery
+
+There are many more, and it shows the community profound love to support this library
 
 # Analysis of the language
 
-> _Organize your report according to the project description
-document_.
+> After going through the language, I have determine that:
+1. Kotlin is functional programming language since it supports higher order, function types and lambda expression.
+2. It does not support Meta Programming
+3. It does support partial closure, such as importing a package at the begining, which could be served as a Namespace. It also does contain alot of scoping.
+4. Kotlin does infact do Lexical Scoping
+5. Kotlin uses fuctional construct extensively as part of its langauge and part of it stdlib, such as `apply`, `with` , `also` , `run`, `let`
+6. Kotlin is a statically AND Strongly typed language
+7. There are some pros and cons with this langauage
+> Pros:
+> - More work can be done within a fewer time since, some function can be done with little line of codes
+> - It compiles along with existing Java Code
+> - It can be easily maintainable
+
+>Cons:
+> - Compilation time do fluctuate
+> - There are not much experts on Kotlin
+> - It would take time to learn this language sinces its not java
+
 
 
